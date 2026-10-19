@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Método Seca 21 - Baja de peso sin pasar hambre</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #10B981;
+            --secondary: #34D399;
+            --accent: #6EE7B7;
+            --bg: #022C22;
+            --text-light: #F9FAFB;
+            --text-muted: #9CA3AF;
+            --card-bg: rgba(255, 255, 255, 0.03);
+            --border: rgba(110, 231, 183, 0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--primary);
+            color: var(--bg);
+            padding: 18px 36px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 10px 20px rgba(16, 185, 129, 0.2);
+            border: none;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            background: var(--secondary);
+            box-shadow: 0 15px 30px rgba(16, 185, 129, 0.3);
+        }
+
+        .image-placeholder {
+            border: 2px dashed var(--border);
+            padding: 40px;
+            text-align: center;
+            border-radius: 12px;
+            margin: 20px 0;
+            background: rgba(255, 255, 255, 0.02);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .image-placeholder svg {
+            width: 48px;
+            height: 48px;
+            fill: var(--accent);
+            margin-bottom: 10px;
+        }
+
+        .image-placeholder p {
+            color: var(--text-muted);
+            font-size: 0.8rem;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        /* Hero */
+        .hero {
+            text-align: center;
+            padding-top: 100px;
+            background: radial-gradient(circle at top, rgba(16, 185, 129, 0.1) 0%, transparent 70%);
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+
+        .hero span {
+            color: var(--primary);
+        }
+
+        /* Subheadline */
+        .subheadline {
+            max-width: 700px;
+            margin: 0 auto 40px;
+            font-size: 1.25rem;
+            color: var(--text-muted);
+        }
+
+        /* Problema */
+        .problema {
+            background: rgba(0,0,0,0.2);
+        }
+
+        .problema-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+        }
+
+        /* Solucion */
+        .solucion {
+            text-align: center;
+        }
+
+        /* Beneficios */
+        .beneficios-list {
+            list-style: none;
+            margin-top: 40px;
+        }
+
+        .beneficio-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        .beneficio-item::before {
+            content: "✓";
+            color: var(--primary);
+            font-weight: bold;
+            margin-right: 15px;
+            font-size: 1.3rem;
+        }
+
+        /* Modulos */
+        .modulos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .modulo-card {
+            border-left: 4px solid var(--primary);
+            background: var(--card-bg);
+            padding: 25px;
+        }
+
+        /* Comparacion */
+        .comparacion-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 40px;
+        }
+
+        .comparacion-table th, .comparacion-table td {
+            padding: 20px;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .comparacion-table th {
+            color: var(--primary);
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* FAQ */
+        .faq-item {
+            margin-bottom: 15px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 15px;
+        }
+
+        .faq-item h3 {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            color: var(--accent);
+        }
+
+        /* Oferta */
+        .oferta-box {
+            background: linear-gradient(145deg, rgba(16, 185, 129, 0.1), rgba(2, 44, 34, 1));
+            border: 2px solid var(--primary);
+            border-radius: 20px;
+            padding: 50px;
+            text-align: center;
+        }
+
+        .precio-old {
+            text-decoration: line-through;
+            color: var(--text-muted);
+            font-size: 1.5rem;
+        }
+
+        .precio-new {
+            font-size: 4rem;
+            font-weight: 700;
+            color: var(--text-light);
+            display: block;
+            margin: 10px 0;
+        }
+
+        /* Bonus */
+        .bonus-badge {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--bg);
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 0.8rem;
+            margin-bottom: 10px;
+        }
+
+        /* Urgencia */
+        .urgencia {
+            background: #fef2f210;
+            text-align: center;
+            padding: 20px;
+            border: 1px dashed #ef4444;
+            margin-top: 20px;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            border-top: 1px solid var(--border);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .animate {
+            animation: fadeIn 0.8s ease forwards;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.2rem; }
+            .precio-new { font-size: 3rem; }
+            .oferta-box { padding: 30px 15px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Hero -->
+    <section class="hero animate">
+        <div class="container">
+            <h1>Baja hasta 6 kilos en 21 días <span>sin dejar de comer lo que te gusta</span></h1>
+            <p class="subheadline">El primer sistema digital diseñado para madres sin tiempo que necesitan resultados reales, usando ingredientes que ya tienes en tu cocina.</p>
+            
+            <img src="imagen1(2).png" alt="hero-image" style="display:block;width:100%;max-width:100%;object-fit:cover;border-radius:12px;margin:0 auto;" />
+
+            <a href="#" class="btn">¡Quiero empezar mi transformación ahora!</a>
+        </div>
+    </section>
+
+    <!-- Problema -->
+    <section class="problema">
+        <div class="container">
+            <h2 style="text-align: center; margin-bottom: 40px;">¿Te sientes atrapada en el ciclo de las dietas?</h2>
+            <div class="problema-grid">
+                <div class="card">
+                    <h3>Comes "sano" pero no bajas</h3>
+                    <p>Estás cansada de comer ensaladas insípidas y ver que la balanza no se mueve ni un gramo.</p>
+                </div>
+                <div class="card">
+                    <h3>Cero tiempo para cocinar</h3>
+                    <p>Entre el trabajo y los niños, terminas pidiendo delivery a última hora por puro agotamiento.</p>
+                </div>
+                <div class="card">
+                    <h3>El efecto rebote eterno</h3>
+                    <p>Empiezas con motivación el lunes, pero el miércoles el hambre y la ansiedad te hacen abandonar.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solucion -->
+    <section class="solucion">
+        <div class="container">
+            <h2>Presentamos: Método Seca 21</h2>
+            <p style="margin: 20px 0 40px; color: var(--text-muted);">No es una dieta, es un sistema inteligente de nutrición termogénica que se adapta a tu vida, no al revés.</p>
+            
+            <img src="imagen2.png" alt="product-app-view" style="display:block;width:100%;max-width:100%;object-fit:cover;border-radius:12px;margin:0 auto;" />
+        </div>
+    </section>
+
+    <!-- Beneficios -->
+    <section class="beneficios">
+        <div class="container">
+            <h2 style="margin-bottom: 30px;">Por qué Seca 21 es diferente:</h2>
+            <div class="beneficios-list">
+                <div class="beneficio-item"><strong>Resultados en 21 días:</strong> Diseñado para activar tu metabolismo rápidamente.</div>
+                <div class="beneficio-item"><strong>Recetas de 15 minutos:</strong> Platos deliciosos que se preparan más rápido que un pedido a domicilio.</div>
+                <div class="beneficio-item"><strong>Sin ingredientes raros:</strong> Todo lo compras en el súper de la esquina.</div>
+                <div class="beneficio-item"><strong>Sin efecto rebote:</strong> Aprendes a combinar alimentos, no a pasar hambre.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modulos -->
+    <section class="modulos">
+        <div class="container">
+            <h2 style="text-align: center; margin-bottom: 40px;">Lo que recibirás hoy</h2>
+            <div class="modulos-grid">
+                <div class="modulo-card">
+                    <h3>Plan de 21 Días Paso a Paso</h3>
+                    <p>Qué comer al desayuno, almuerzo y cena. Sin pensar, solo sigue el plan.</p>
+                </div>
+                <div class="modulo-card">
+                    <h3>90 Recetas Termogénicas</h3>
+                    <p>Sabores increíbles que obligan a tu cuerpo a usar grasa como energía.</p>
+                </div>
+                <div class="modulo-card">
+                    <h3>Web-App de Acceso Instantáneo</h3>
+                    <p>Lleva tu plan en el celular. Sin descargas pesadas, acceso de por vida.</p>
+                </div>
+                <div class="modulo-card">
+                    <h3>Lista de Compras Dinámica</h3>
+                    <p>Se actualiza cada semana para que compres solo lo que necesitas y ahorres dinero.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comparacion -->
+    <section class="comparacion">
+        <div class="container">
+            <h2 style="text-align: center;">Seca 21 vs. Nutricionista Convencional</h2>
+            <table class="comparacion-table">
+                <thead>
+                    <tr>
+                        <th>Característica</th>
+                        <th>Nutricionista</th>
+                        <th>Método Seca 21</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Costo</td>
+                        <td>$150 - $300 USD</td>
+                        <td>$17 USD</td>
+                    </tr>
+                    <tr>
+                        <td>Tiempo de espera</td>
+                        <td>Semanas para una cita</td>
+                        <td>Acceso Inmediato</td>
+                    </tr>
+                    <tr>
+                        <td>Flexibilidad</td>
+                        <td>Dietas rígidas</td>
+                        <td>Recetas rápidas y ricas</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq">
+        <div class="container">
+            <h2 style="text-align: center; margin-bottom: 40px;">Preguntas Frecuentes</h2>
+            <div class="faq-item">
+                <h3>¿Necesito comprar suplementos?</h3>
+                <p>No. El método se basa 100% en comida real que encuentras en cualquier mercado.</p>
+            </div>
+            <div class="faq-item">
+                <h3>¿Es apto si tengo poco tiempo?</h3>
+                <p>Totalmente. Las recetas están pensadas para mujeres que trabajan y tienen familia. Máximo 15-20 min.</p>
+            </div>
+            <div class="faq-item">
+                <h3>¿El acceso es para siempre?</h3>
+                <p>Sí, pagas una vez y tienes acceso ilimitado a la plataforma y todas las actualizaciones.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Garantia -->
+    <section class="garantia">
+        <div class="container" style="text-align: center;">
+            <img src="imagen3.png" alt="sello-garantia" style="display:block;width:100%;max-width:100%;object-fit:cover;border-radius:12px;margin:0 auto;" />
+            <h2>Garantía Total de 7 Días</h2>
+            <p>Prueba el método, aplica las recetas y mira los resultados. Si en 7 días sientes que no es para ti, te devolvemos el 100% de tu dinero sin preguntas.</p>
+        </div>
+    </section>
+
+    <!-- Oferta -->
+    <section class="oferta">
+        <div class="container">
+            <div class="oferta-box">
+                <h2>Empieza hoy mismo</h2>
+                <span class="precio-old">Antes $47 USD</span>
+                <span class="precio-new">$17 USD</span>
+                <p style="margin-bottom: 30px;">Pago único. Acceso inmediato.</p>
+                <a href="#" class="btn">¡QUIERO MI ACCESO AHORA!</a>
+                
+                <div class="urgencia">
+                    <p>⚠️ <strong>Atención:</strong> Este precio promocional expira pronto. Quedan pocos cupos con descuento.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bonus -->
+    <section class="bonus">
+        <div class="container">
+            <h2 style="text-align: center; margin-bottom: 40px;">Llévate estos Regalos Exclusivos:</h2>
+            <div class="modulos-grid">
+                <div class="card">
+                    <span class="bonus-badge">BONUS 1</span>
+                    <h3>Guía de "Cenas Express"</h3>
+                    <p>Recetas de 5 minutos para esos días donde llegas agotada.</p>
+                </div>
+                <div class="card">
+                    <span class="bonus-badge">BONUS 2</span>
+                    <h3>Planificador de Compras</h3>
+                    <p>Ahorra hasta un 30% en tu presupuesto mensual de comida.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Final -->
+    <section class="cta-final" style="text-align: center; background: rgba(16, 185, 129, 0.05);">
+        <div class="container">
+            <h2>¿Lista para ver a una mujer nueva en el espejo?</h2>
+            <p style="margin: 20px 0 30px;">Únete a las más de 1,200 mujeres que ya transformaron su cuerpo con Seca 21.</p>
+            <a href="#" class="btn">SÍ, QUIERO BAJAR DE PESO</a>
+            
+            <img src="imagen4.png" alt="testimonios-grid" style="display:block;width:100%;max-width:100%;object-fit:cover;border-radius:12px;margin:0 auto;" />
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Método Seca 21. Todos los derechos reservados.</p>
+            <p style="font-size: 0.7rem; margin-top: 10px;">Este producto no sustituye el asesoramiento médico profesional. Los resultados pueden variar de persona a persona.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
