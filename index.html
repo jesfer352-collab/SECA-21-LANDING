@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Método Seca 21 - Baja de peso sin pasar hambre</title>
+    <title>Método Seca 21 - 21 días comiendo rico, sin pasar hambre</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
@@ -281,18 +281,33 @@
             .oferta-box { padding: 30px 15px; }
         }
     </style>
+    <!-- Meta Pixel Code -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '3780885722049484');
+    fbq('track', 'PageView');
+    </script>
+    <!-- End Meta Pixel Code -->
 </head>
 <body>
+    <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=3780885722049484&ev=PageView&noscript=1" alt=""/></noscript>
 
     <!-- Hero -->
     <section class="hero animate">
         <div class="container">
-            <h1>Baja hasta 6 kilos en 21 días <span>sin dejar de comer lo que te gusta</span></h1>
+            <h1>Siéntete más ligera en 21 días <span>sin pasar hambre ni dejar de comer lo que te gusta</span></h1>
             <p class="subheadline">El primer sistema digital diseñado para madres sin tiempo que necesitan resultados reales, usando ingredientes que ya tienes en tu cocina.</p>
             
             <img src="imagen1(2).png" alt="hero-image" style="display:block;width:100%;max-width:100%;object-fit:cover;border-radius:12px;margin:0 auto;" />
 
-            <a href="#" class="btn">¡Quiero empezar mi transformación ahora!</a>
+            <a href="https://pay.hotmart.com/G108092385U" class="btn">¡Quiero empezar mi transformación ahora!</a>
         </div>
     </section>
 
@@ -434,7 +449,7 @@
                 <span class="precio-old">Antes $47 USD</span>
                 <span class="precio-new">$17 USD</span>
                 <p style="margin-bottom: 30px;">Pago único. Acceso inmediato.</p>
-                <a href="#" class="btn">¡QUIERO MI ACCESO AHORA!</a>
+                <a href="https://pay.hotmart.com/G108092385U" class="btn">¡QUIERO MI ACCESO AHORA!</a>
                 
                 <div class="urgencia">
                     <p>⚠️ <strong>Atención:</strong> Este precio promocional expira pronto. Quedan pocos cupos con descuento.</p>
@@ -467,7 +482,7 @@
         <div class="container">
             <h2>¿Lista para ver a una mujer nueva en el espejo?</h2>
             <p style="margin: 20px 0 30px;">Únete a las más de 1,200 mujeres que ya transformaron su cuerpo con Seca 21.</p>
-            <a href="#" class="btn">SÍ, QUIERO BAJAR DE PESO</a>
+            <a href="https://pay.hotmart.com/G108092385U" class="btn">SÍ, QUIERO BAJAR DE PESO</a>
             
             <img src="imagen4.png" alt="testimonios-grid" style="display:block;width:100%;max-width:100%;object-fit:cover;border-radius:12px;margin:0 auto;" />
         </div>
@@ -475,10 +490,18 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2023 Método Seca 21. Todos los derechos reservados.</p>
+            <p>&copy; 2026 Método Seca 21. Todos los derechos reservados.</p>
             <p style="font-size: 0.7rem; margin-top: 10px;">Este producto no sustituye el asesoramiento médico profesional. Los resultados pueden variar de persona a persona.</p>
         </div>
     </footer>
 
+    <script>
+    // InitiateCheckout al hacer clic en cualquier boton de compra de Hotmart
+    document.querySelectorAll('a[href*="pay.hotmart.com"]').forEach(function(a){
+      a.addEventListener('click',function(){
+        if(window.fbq) fbq('track','InitiateCheckout',{content_name:'Metodo Seca 21',value:17,currency:'USD'});
+      });
+    });
+    </script>
 </body>
 </html>
